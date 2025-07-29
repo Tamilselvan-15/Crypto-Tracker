@@ -1,0 +1,396 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  min-height: 100vh;
+  color: #333;
+}
+
+/* NAVBAR STYLES */
+
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  gap: 20px;
+}
+
+.logo {
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+
+/* DROPDOWN - CURRENCY SELECT */
+
+.currency-select {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: white !important;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+}
+
+.currency-select:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+}
+
+.currency-select option {
+  background-color: #4a5568;
+  color: white;
+  padding: 12px;
+}
+
+/* CARD LAYOUTS */
+
+.cards-wrapper {
+  /* padding: 20px; */
+  padding-bottom: 0px;
+  margin-top: 2vw;
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.crypto-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2.5rem;
+  color: #667eea;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 700px;
+}
+
+.crypto-card:hover {
+  background: #fafbff;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* CRYPTO INFO SECTION */
+
+.crypto-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.crypto-symbol {
+  font-size: 1rem;
+  color: #1e40af;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* CARD STATS SHARED STYLES */
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #1e40af;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.stat-value {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: block;
+}
+
+.price {
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.market-cap {
+  color: #1e40af;
+}
+
+.change-positive {
+  color: #22c55e;
+}
+
+.change-negative {
+  color: #ef4444;
+}
+
+/* INFO CARD (LEFT) */
+
+.info-card {
+  max-width: 400px;
+}
+
+.crypto-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.card-stats-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.stat-item-vertical {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgb(52 98 177 / 6%);
+  border-radius: 10px;
+}
+
+/* CHART CARD (RIGHT) */
+
+.chart-card {
+  max-width: 700px;
+}
+
+.chart-header {
+  margin-bottom: 2rem;
+}
+
+.chart-title {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.time-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.time-btn {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid #1e40af;
+  background: transparent;
+  color: #1e40af;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.time-btn:hover {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.time-btn.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+}
+
+.chart-container {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 10px;
+  padding: 10px;
+  color: #764ba2;
+  font-size: 1.1rem;
+  height: 300px;
+  width: 100%;
+}
+
+/* LOADER */
+
+.loader-align {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-image {
+  width: 64px;
+  height: 64px;
+}
+
+/* ERROR MESSAGE CONTAINER */
+
+.error-container {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.error-title {
+  font-size: 1.8rem;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.error-message {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.try-again {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.try-again:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
+
+@media (max-width: 992px) {
+  .nav-container {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .card-header {
+    flex-direction: column;
+
+    gap: 1.5rem;
+  }
+
+  .crypto-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
+
+  .cards-wrapper {
+    padding: 10px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .crypto-card {
+    max-width: none;
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  .chart-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* @media (max-width: 982px) {
+  .cards-wrapper {
+    padding: 10px;
+  }
+} */
+
+@media (max-width: 600px) {
+  .try-again {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .chart-container {
+    height: 250px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .card-header {
+    gap: 1rem;
+  }
+
+  .stat-item-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .currency-select {
+    min-width: 120px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
