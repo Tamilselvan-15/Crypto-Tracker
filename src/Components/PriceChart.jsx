@@ -26,7 +26,7 @@ const PriceChart = () => {
   // Initial and dependency-based data fetching
   useEffect(() => {
     getCoinChartDetails();
-  }, [selectedDays]);
+  }, [selectedDays, selectedCoin]);
 
   // Show error toast if graph data fails to load
   useEffect(() => {

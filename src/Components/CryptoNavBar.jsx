@@ -68,8 +68,6 @@ const CryptoNavbar = ({
               value={searchCoin}
               onChange={(e) => {
                 setSearchCoin(e.target.value);
-                // setHomeLoader(true);
-                setError(false);
               }}
             />
 

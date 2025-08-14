@@ -48,7 +48,12 @@ const HomePage = () => {
 
   //to perform search when searchCoin input changes
   useEffect(() => {
-    if (searchCoin.length > 2) handleSearchCoin();
+    if (searchCoin.length > 2) {
+      if (error) {
+        setError(false);
+      }
+      handleSearchCoin();
+    }
   }, [searchCoin]);
 
   // to format coin data
