@@ -43,8 +43,8 @@ const HomePage = () => {
 
   // to fetch coin data when selectedCoin changes
   useEffect(() => {
-    getCoinDetails();
-  }, [selectedCoin]);
+    if (!error) getCoinDetails();
+  }, [selectedCoin, error]);
 
   //to perform search when searchCoin input changes
   useEffect(() => {
