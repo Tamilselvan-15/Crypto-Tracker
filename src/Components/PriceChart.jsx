@@ -84,7 +84,9 @@ const PriceChart = () => {
       },
       yaxis: {
         labels: {
-          formatter: formatAmericanNumber,
+          formatter: function (val) {
+            return "$" + formatAmericanNumber(val);
+          },
         },
         tooltip: { enabled: true },
       },
