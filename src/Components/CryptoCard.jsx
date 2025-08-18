@@ -1,4 +1,4 @@
-import { formatIndianNumber, formatToBillionMillion } from "../Util/Util";
+import { formatAmericanNumber, formatToBillionMillion } from "../Util/Util";
 import Avatar from "@mui/material/Avatar";
 
 const Card = ({ coinValue }) => {
@@ -23,13 +23,13 @@ const Card = ({ coinValue }) => {
         <div className="stat-item-vertical">
           <span className="stat-label">Current Price</span>
           <span className="stat-value price">
-            ₹{formatIndianNumber(coinValue?.currentPrice)}
+            ${formatAmericanNumber(coinValue?.currentPrice)}
           </span>
         </div>
         <div className="stat-item-vertical">
           <span className="stat-label">Market Cap</span>
           <span className="stat-value market-cap">
-            ₹{formatToBillionMillion(coinValue?.marketCap)}
+            ${formatToBillionMillion(coinValue?.marketCap)}
           </span>
         </div>
         <div className="stat-item-vertical">

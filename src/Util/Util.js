@@ -1,8 +1,8 @@
-// to format commas for indian rupees
-function formatIndianNumber(num) {
+// to format commas for american rupees
+function formatAmericanNumber(num) {
   const plainNumber = Number(num); // 117536
-  const indianFormatted = plainNumber.toLocaleString("en-IN");
-  return indianFormatted;
+  const americanFormatted = plainNumber.toLocaleString("en-US");
+  return americanFormatted;
 }
 
 //to format million or billion
@@ -143,7 +143,7 @@ function getDataForMonth(prices) {
 }
 
 export {
-  formatIndianNumber,
+  formatAmericanNumber,
   formatToBillionMillion,
   getDataForOneDay,
   getDataForSevenDays,

@@ -8,7 +8,7 @@ import {
   getDataForOneDay,
   getDataForSevenDays,
   getDataForMonth,
-  formatToBillionMillion,
+  formatAmericanNumber,
 } from "../Util/Util";
 import { getCoinPriceDetails } from "../Api/Api";
 import { setSelectedDays } from "../store/coinFilterSlice";
@@ -84,7 +84,7 @@ const PriceChart = () => {
       },
       yaxis: {
         labels: {
-          formatter: formatToBillionMillion,
+          formatter: formatAmericanNumber,
         },
         tooltip: { enabled: true },
       },

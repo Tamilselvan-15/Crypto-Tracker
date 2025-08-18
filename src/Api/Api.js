@@ -3,7 +3,7 @@ import client from "../Client/Client";
 //get API for Coin Price Details
 const getCoinPriceDetails = async (coin, days) => {
   try {
-    let URL = `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=INR&days=${days}`;
+    let URL = `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=usd&days=${days}`;
     const response = await client(URL, {}, "GET");
     return response;
   } catch (error) {
