@@ -1,32 +1,32 @@
-import { useEffect, useMemo, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import ReactApexChart from "react-apexcharts";
-import CircularProgress from "@mui/material/CircularProgress";
-import { toast } from "react-toastify";
+import { useEffect, useMemo, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import ReactApexChart from "react-apexcharts"
+import CircularProgress from "@mui/material/CircularProgress"
+import { toast } from "react-toastify"
 
 import {
   getDataForOneDay,
   getDataForSevenDays,
   getDataForMonth,
   formatAmericanNumber,
-} from "../Util/Util";
-import { getCoinPriceDetails } from "../Api/Api";
-import { setSelectedDays } from "../store/coinFilterSlice";
+} from "../Util/Util"
+import { getCoinPriceDetails } from "../Api/Api"
+import { setSelectedDays } from "../store/coinFilterSlice"
 
 const PriceChart = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const selectedCoin = useSelector((state) => state.coinFilter.selectedCoin);
-  const selectedDays = useSelector((state) => state.coinFilter.selectedDays);
+  const selectedCoin = useSelector((state) => state.coinFilter.selectedCoin)
+  const selectedDays = useSelector((state) => state.coinFilter.selectedDays)
 
-  const [graphData, setGraphData] = useState([]);
-  const [graphLoader, setGraphLoader] = useState(true);
-  const [graphError, setGraphError] = useState(false);
+  const [graphData, setGraphData] = useState([])
+  const [graphLoader, setGraphLoader] = useState(true)
+  const [graphError, setGraphError] = useState(false)
 
   // Initial and dependency-based data fetching
   useEffect(() => {
-    getCoinChartDetails();
-  }, [selectedDays, selectedCoin]);
+    getCoinChartDetails()
+  }, [selectedDays, selectedCoin])
 
   // Show error toast if graph data fails to load
   useEffect(() => {
@@ -35,38 +35,38 @@ const PriceChart = () => {
         position: "top-right",
         autoClose: 3000,
         style: { paddingRight: "2.5rem" },
-      });
+      })
     }
-  }, [graphError]);
+  }, [graphError])
 
   // to get coin price data for the selected coin and timeframe
   const getCoinChartDetails = async () => {
     try {
-      setGraphLoader(true);
-      setGraphError(false);
-      setGraphData([]);
+      setGraphLoader(true)
+      setGraphError(false)
+      setGraphData([])
 
-      const response = await getCoinPriceDetails(selectedCoin, selectedDays);
-      setGraphData(response?.prices || []);
+      const response = await getCoinPriceDetails(selectedCoin, selectedDays)
+      setGraphData(response?.prices || [])
     } catch (error) {
-      setGraphError(true);
+      setGraphError(true)
     } finally {
-      setGraphLoader(false);
+      setGraphLoader(false)
     }
-  };
+  }
 
   // to get data for the selected time range
   const series = useMemo(() => {
-    let data = [];
+    let data = []
     if (selectedDays === 1) {
-      data = getDataForOneDay(graphData);
+      data = getDataForOneDay(graphData)
     } else if (selectedDays === 7) {
-      data = getDataForSevenDays(graphData);
+      data = getDataForSevenDays(graphData)
     } else {
-      data = getDataForMonth(graphData);
+      data = getDataForMonth(graphData)
     }
-    return [{ data }];
-  }, [graphData, selectedDays]);
+    return [{ data }]
+  }, [graphData, selectedDays])
 
   // Chart configuration
   const options = useMemo(
@@ -85,14 +85,27 @@ const PriceChart = () => {
       yaxis: {
         labels: {
           formatter: function (val) {
-            return "$" + formatAmericanNumber(val);
+            return "$" + formatAmericanNumber(val)
           },
         },
         tooltip: { enabled: true },
       },
     }),
     [selectedDays]
-  );
+  )
+
+  const handleTimeButtonClick = (value) => {
+    dispatch(setSelectedDays(value))
+    window.dataLayer = window.dataLayer || []
+    console.log("selectedCoin", selectedCoin, value)
+    if (value === 30) {
+      window.dataLayer.push({
+        event: "chart_month_button",
+        time_value: value,
+        coin_name: selectedCoin,
+      })
+    }
+  }
 
   return (
     <div className="crypto-card chart-card">
@@ -109,7 +122,8 @@ const PriceChart = () => {
               className={`${
                 selectedDays === btn.value ? "time-btn active" : "time-btn"
               }`}
-              onClick={() => dispatch(setSelectedDays(btn.value))}>
+              onClick={() => handleTimeButtonClick(btn.value)}
+            >
               {btn.label}
             </button>
           ))}
@@ -133,7 +147,7 @@ const PriceChart = () => {
           ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PriceChart;
+export default PriceChart
