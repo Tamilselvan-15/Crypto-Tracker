@@ -101,8 +101,6 @@ const PriceChart = () => {
     if (value === 30) {
       window.dataLayer.push({
         event: "chart_month_button",
-        time_value: value,
-        coin_name: selectedCoin,
       })
     }
   }
